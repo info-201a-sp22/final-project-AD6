@@ -3,6 +3,33 @@ library(plotly)
 library(dplyr)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
+# new columns
+nyc_data <- nyc_data %>%
+  mutate(english_score = (
+    Average.Score..SAT.Reading. + Average.Score..SAT.Writing.) / 2,
+    total_score = english_score + Average.Score..SAT.Math.)
+
+nyc_data <- nyc_data %>% 
+  mutate(Percent_Asian = paste0(str_replace(nyc_data$Percent.Asian, "%", "")))
+
+nyc_data$Percent_Asian <- as.numeric(nyc_data$Percent_Asian)
+
+nyc_data <- nyc_data %>% 
+  mutate(Percent_Black = paste0(str_replace(nyc_data$Percent.Black, "%", "")))
+
+nyc_data$Percent_Black <- as.numeric(nyc_data$Percent_Black)
+
+nyc_data <- nyc_data %>% 
+  mutate(Percent_Hispanic = paste0(str_replace(nyc_data$Percent.Hispanic, "%", "")))
+
+nyc_data$Percent_Hispanic <- as.numeric(nyc_data$Percent_Hispanic)
+
+nyc_data <- nyc_data %>% 
+  mutate(Percent_White = paste0(str_replace(nyc_data$Percent.White, "%", "")))
+
+nyc_data$Percent_White <- as.numeric(nyc_data$Percent_White)
+
+
 
 server <- function(input, output) {
 # Introduction Page 
@@ -44,4 +71,18 @@ server <- function(input, output) {
     
     
   })
+  
+  #Second Page Plot
+  output$race_scatter_plot <- renderPlotly({
+    race_scatter_plot <- ggplot(data = nyc_data) +
+      geom_line(mapping = aes(x = tota_score, 
+                              y = Percent_White, color = School.Name)) +
+      labs(title = "SAT Scores by Race",
+           x = "Total SAT Score",
+           y = "Race")
+    
+    return(race_scatter_plot)
+  })
+  
+
 }
