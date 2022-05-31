@@ -7,7 +7,7 @@ nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 server <- function(input, output) {
 # Introduction Page 
 
-# First Page (scatterplot)
+  # First Page (scatterplot)
   output$scatter_plot <- renderPlotly({
     plot_data <- nyc_data %>%
       filter(Borough %in% input$borough_pick,
@@ -18,7 +18,7 @@ server <- function(input, output) {
                      y = ~Average.Score..SAT.Reading.,
                      type = "scatter",
                      mode = "markers",
-                     color = ~model,
+                     color = ~Borough,
                      marker = list(size = 20),
                      # interactive texts
                      text = ~paste("<b>Neighborhood:</b>",
@@ -31,7 +31,7 @@ server <- function(input, output) {
                                    plot_data$Average.Score..SAT.Math.,
                                    "<br>",
                                    "<b>Average SAT Reading Score:</b>",
-                                   plot_data$verage.Score..SAT.Reading.),
+                                   plot_data$Average.Score..SAT.Reading.),
                      hoverinfo = "text") %>%
       
       # set title, x, and y axis labels
@@ -43,5 +43,5 @@ server <- function(input, output) {
     return(plot2)
     
     
-  }) 
-  }
+  })
+}
