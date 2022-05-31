@@ -1,0 +1,10 @@
+Our final project will focus on analyzing patterns within the average SAT scores for NYC public schools. Some initial questions we are posing (which may require additional datasets) include:
+1. Which geographical regions (based on borough or zip code) have the highest and lowest average SAT scores?
+2. What are the correlations between average SAT scores and school funding?  
+3. Similar to the previous question, how do resource disparities (staff, number of AP classes offered, extracurriculars, etc.) impact SAT scores?
+4. What patterns of inequity are there between average SAT scores and demographic compositions of public schools (average income, race, parental education level, etc.)?
+5. How does class size/total number of students impact SAT scores?
+
+These questions are important to consider since standardized testing is nowhere near an accurate proxy for intelligence; however, SAT scores serve as a way to illuminate the socio-economic conditions of various neighborhoods. Of course, to score well on the SATs, students must study for it in a highly calculated manner. The ability to prepare for these tests is not accessible to everyone, especially due to the expense of paid tutoring and the amount of time one has to dedicate to it outside of school. It will be interesting to investigate these questions to understand the ways in which certain variables impact average scores. This knowledge may influence education policies, public school financing, the design of the SAT, or the norm for colleges to require these scores.
+
+An ethical question we may ask when working with this data is do we have all significant observations needed to conclude information from this data? Could there have been information purposely left out by either of the two contributors? In this case there could have been a lack of information that could result in different outcomes. Some possible limitations with this data is that there are some missing values which leave room for inaccurate drawings. Another limitation is that for one of the observations, not all students were tested which could affect the results we gather from the data.

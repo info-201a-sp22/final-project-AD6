@@ -14,8 +14,11 @@ intro_tab <- tabPanel(
   fluidPage(
     h1("Analysis of NYC SAT Scores", align = "center"),
     h3("Research Questions", align = "left"),
+    renderMarkdown("intro_text.md"),
     h3("Data"),
-    h3("Limitations"))) 
+    renderMarkdown("data_text.md"),
+    h3("Limitations and Implications"),
+    renderMarkdown("limitations_text.md"))) 
 
 # Data needed for first page widgets #
 # city miles range
@@ -51,17 +54,29 @@ first_page <- tabPanel(
   )
 
 
+# Page 2 Widgets
+page2_panel_widget <- sidebarPanel(
+  selectInput(
+    inputId = "page2_burough_selection",
+    label = h3("Burough"),
+    choices = unique(nyc_data$Borough),
+    multiple = TRUE
+  ))
+
+# Page 2 Set up 
 race_scatter_plot <- mainPanel(
   plotlyOutput(outputId = "race_scatter_plot")
 )
 
 second_page <- tabPanel(
   "Race vs Scores",
+  sidebarLayout(
+    page2_panel_widget,
   race_scatter_plot
-)
+))
 
 
-
+# Navbar
 ui <- navbarPage(
   "NYC SAT Scores",
   intro_tab, 
