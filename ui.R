@@ -21,12 +21,6 @@ intro_tab <- tabPanel(
 
 # Data needed for first page widgets #
 # city miles range
-student.enrollment <- range(nyc_data$Student.Enrollment)
-# manufacturer types
-neighborhood_pick <- unique(nyc_data$Borough)
-
-# Data needed for first page widgets #
-# city miles range
 student.enrollment <- range(nyc_data$Student.Enrollment, na.rm = TRUE)
 # manufacturer types
 neighborhood_pick <- unique(nyc_data$Borough, na.rm = TRUE)
