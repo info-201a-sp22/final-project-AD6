@@ -9,8 +9,6 @@ library(markdown)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
 
-
-
 intro_tab <- tabPanel(
   "Introduction",
   fluidPage(
@@ -42,15 +40,15 @@ student_slider <- sliderInput(inputId = "student_enrollment",
                               step = 1)
 
 # Page setup #
-first_page <- tabsetPanel(
-  tabPanel("SAT Scores and Student Enrollment",
+first_page <- tabPanel(
+ "SAT Scores and Student Enrollment",
            fluidRow(
              column(city_slider, width = 6),
              column(student_slider, width = 6)
            ),
            fluidRow(
              column(plotlyOutput("scatter_plot"), width = 12))
-  ))
+  )
 
 
 race_scatter_plot <- mainPanel(
@@ -59,7 +57,7 @@ race_scatter_plot <- mainPanel(
 
 second_page <- tabPanel(
   "Race vs Scores",
-  sidebarLayout(race_scatter_plot)
+  race_scatter_plot
 )
 
 
@@ -67,5 +65,6 @@ second_page <- tabPanel(
 ui <- navbarPage(
   "NYC SAT Scores",
   intro_tab, 
-  first_page
+  first_page,
+  second_page
 )

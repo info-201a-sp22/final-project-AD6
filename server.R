@@ -29,7 +29,14 @@ nyc_data <- nyc_data %>%
 
 nyc_data$Percent_White <- as.numeric(nyc_data$Percent_White)
 
-
+# Theme 
+blank_theme <- theme_bw() +
+  theme(
+    axis.ticks = element_blank(), # remove axis ticks
+    plot.background = element_blank(), # remove gray background
+    panel.grid.minor = element_blank(), # remove minor grid lines
+    panel.border = element_blank() # remove border around plot
+  )
 
 server <- function(input, output) {
 # Introduction Page 
@@ -75,8 +82,9 @@ server <- function(input, output) {
   #Second Page Plot
   output$race_scatter_plot <- renderPlotly({
     race_scatter_plot <- ggplot(data = nyc_data) +
-      geom_line(mapping = aes(x = tota_score, 
+      geom_line(mapping = aes(x = total_score, 
                               y = Percent_White, color = School.Name)) +
+      blank_theme +
       labs(title = "SAT Scores by Race",
            x = "Total SAT Score",
            y = "Race")
