@@ -45,7 +45,7 @@ city_slider <- sliderInput(inputId = "student_enrollment",
 first_page <- tabsetPanel(
   tabPanel("SAT Scores and Student Enrollment",
            fluidRow(
-             column(borough_pick, width = 6),
+             column(student_slider, width = 6),
              column(student_enrollment, width = 6)
            ),
            fluidRow(

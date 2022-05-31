@@ -4,7 +4,7 @@ library(dplyr)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
 
-server <- function(input, output) 
+server <- function(input, output) {
 # Introduction Page 
 
 # First Page (scatterplot)
@@ -44,3 +44,4 @@ server <- function(input, output)
     
     
   }) 
+  }
