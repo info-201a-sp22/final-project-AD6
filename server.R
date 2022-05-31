@@ -39,8 +39,8 @@ blank_theme <- theme_bw() +
   )
 
 server <- function(input, output) {
-# Introduction Page 
-
+  # Introduction Page 
+  
   # First Page (scatterplot)
   output$scatter_plot <- renderPlotly({
     plot_data <- nyc_data %>%
@@ -92,5 +92,5 @@ server <- function(input, output) {
     return(race_scatter_plot)
   })
   
-
+  
 }
