@@ -48,6 +48,7 @@ first_page <- tabPanel(
   ),
   fluidRow(
     column(plotlyOutput("scatter_plot"), width = 12)),
+  h3("How does the neighborhood of the school play a role in the average SAT scores of the students?"), 
   p("This graph is a dot plot which allows us to sort the schools by their neighborhood and then dive deeper to see each individual school represented on the graph. Not only can this graph analyze SAT scores based on neighborhood, but it can also highlight the role school size plays on average SAT scores. From this graph I was able to determine that the Manhattan neighborhood has the highest average SAT scores per school. The Brooklyn and Manhattan neighborhoods have a positive correlation between average SAT score math and average SAT score reading. While other neighborhoods, such as the Bronx, are very bottom heavy, with the vast majority of schools scoring between 300 and 400 on the SAT. If we look at average family median for each of these neighborhoods, these conclusions make sense. According to outside sources, the ten most expensive neighborhoods in New York are all in Manhattan, contributing to greater funding for their public schools.")
 )
 
@@ -63,7 +64,7 @@ second_page <- tabPanel(
 
 conclusion <- tabPanel(
   "Conclusion", 
-  p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school. The first conclusion we came up with is that schools in richer neighborhoods are doing better, on average, on their SATs. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. Through outside research we have con...")
+  p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school. The first conclusion we came up with is that schools in richer neighborhoods are doing better, on average, on their SATs. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. According to Public School Review, in most states, local property taxes make up the majority of funding. This means that a schools funding depends on how wealthy, or poor, a neighborhood is. This leads to many complications and questions about equality and equity in the twenty first century.")
 )
 
 
