@@ -31,7 +31,7 @@ city_slider <- selectInput(inputId = "borough_pick",
                            label = "Select Neighborhood",
                            choices = neighborhood_pick,
                            selected = neighborhood_pick[1],
-                           multiple = FALSE)
+                           multiple = TRUE)
 
 # sliderInput for setting only the maximum number of students 
 student_slider <- sliderInput(inputId = "student_enrollment",
