@@ -21,13 +21,13 @@ intro_tab <- tabPanel(
 
 # Data needed for first page widgets #
 # city miles range
-student.enrollment <- range(nyc_data$Student.Enrollment)
+student.enrollment <- range(nyc_data$Student.Enrollment, na.rm = TRUE)
 # manufacturer types
-neighborhood_pick <- unique(nyc_data$Borough)
+neighborhood_pick <- unique(nyc_data$Borough, na.rm = TRUE)
 
 # First Page #
 # selectInput drop down menu to select neighborhood
-student.enrollment <- selectInput(inputId = "borough_pick",
+student_slider <- selectInput(inputId = "borough_pick",
                                   label = "Select Neighborhood",
                                   choices = neighborhood_pick,
                                   selected = neighborhood_pick[1],
@@ -50,8 +50,7 @@ first_page <- tabsetPanel(
            ),
            fluidRow(
              column(plotlyOutput("scatter_plot"), width = 12))
-  )
-)
+  ))
 
 
 
