@@ -99,15 +99,15 @@ server <- function(input, output) {
 
 # Third Page Plot 
 server <- function(input, output){
-  output$student_enrollment <- renderPlotly({
+  output$third_page_plot <- renderPlotly({
     student_enrollment2 <- student_enrollment %>% 
-      filter(Student.Enrollment %in% input$avg_sat_scores_selection)
+      filter(average_sat_score >= input$avg_sat_scores_selection[1] & average_sat_score <= input$avg_sat_scores_selection[2])
     
-    student_enrollment <- ggplot(data = student_enrollment2) +
-      geom_point(mapping = aes(x = Student.Enrollment, y = average_sat_score,)) +
+    third_page_plot <- ggplot(data = student_enrollment2) +
+      geom_point(mapping = aes(x = Student.Enrollment, y = average_sat_score)) +
       labs(title = "Student Enrollment versus Average SAT Scores", 
            x = "Student Enrollment", 
            y = "Average SAT Scores")
-    return(student_enrollment)
+    return(third_page_plot)
   })
 }

@@ -97,18 +97,21 @@ student_enrollment <- avg_sat_scores %>%
 student_enrollment <- na.omit(student_enrollment)
 # Third Page Setup
 chart_widget <-
-  selectInput(
+  sliderInput(
     inputId = "avg_sat_scores_selection",
     label = "Average SAT Scores",
-    choices = student_enrollment$average_sat_score,
-    multiple = TRUE)
+    min = (min(student_enrollment$average_sat_score)),
+    max = (max(student_enrollment$average_sat_score)),
+    sep = "",
+    value = c(622.5000,1449.0000))
+   
 
-scatter_plot <- mainPanel(plotlyOutput(outputId = "student_enrollment"))
+scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
-  sidebarLayout(sidebarPanel(chart_widget, 
-                             scatter_plot)))
+  sidebarLayout(sidebarPanel(chart_widget,), 
+                             scatter_plot))
   
 # Conclusion
 conclusion <- tabPanel(
