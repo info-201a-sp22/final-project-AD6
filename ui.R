@@ -84,6 +84,21 @@ second_page <- tabPanel(
     race_scatter_plot,
     page2_panel_widget
   ))
+
+# Third Page Setup
+chart_widget <-
+  selectInput(
+    inputId = "avg_sat_scores_selection",
+    label = "Average SAT Scores",
+    choices = student_enrollment$average_sat_score,
+    multiple = TRUE)
+
+scatter_plot <- mainPanel(plotlyOutput(outputId = "student_enrollment"))
+
+third_page <- tabPanel(
+  "Student Enrollment VS Average SAT Scores",
+  sidebarLayout(sidebarPanel(chart_widget, 
+                             scatter_plot)))
   
 # Conclusion
 conclusion <- tabPanel(
@@ -97,6 +112,7 @@ ui <- navbarPage(
   "NYC SAT Scores",
   intro_tab, 
   first_page,
-  second_page, 
+  second_page,
+  third_page,
   conclusion
 )
