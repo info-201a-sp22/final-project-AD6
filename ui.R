@@ -85,6 +85,16 @@ second_page <- tabPanel(
     page2_panel_widget
   ))
 
+# Data for Third Page 
+nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
+avg_sat_scores <- nyc_data %>% 
+  mutate(avg_sat_scores = Average.Score..SAT.Math. + ((Average.Score..SAT.Reading. + Average.Score..SAT.Writing.)/2))
+
+student_enrollment <- avg_sat_scores %>% 
+  group_by(Student.Enrollment) %>% 
+  summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
+
+student_enrollment <- na.omit(student_enrollment)
 # Third Page Setup
 chart_widget <-
   selectInput(
