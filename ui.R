@@ -14,8 +14,11 @@ intro_tab <- tabPanel(
   fluidPage(
     h1("Analysis of NYC SAT Scores", align = "center"),
     h3("Research Questions", align = "left"),
+    renderMarkdown("intro_text.md"),
     h3("Data"),
-    h3("Limitations"))) 
+    renderMarkdown("data_text.md"),
+    h3("Limitations"),
+    renderMarkdown("limitations_text.md"))) 
 
 # Data needed for first page widgets #
 # city miles range
@@ -52,21 +55,41 @@ first_page <- tabPanel(
   p("This graph is a dot plot which allows us to sort the schools by their neighborhood and then dive deeper to see each individual school represented on the graph. Not only can this graph analyze SAT scores based on neighborhood, but it can also highlight the role school size plays on average SAT scores. From this graph I was able to determine that the Manhattan neighborhood has the highest average SAT scores per school. The Brooklyn and Manhattan neighborhoods have a positive correlation between average SAT score math and average SAT score reading. While other neighborhoods, such as the Bronx, are very bottom heavy, with the vast majority of schools scoring between 300 and 400 on the SAT. If we look at average family median for each of these neighborhoods, these conclusions make sense. According to outside sources, the ten most expensive neighborhoods in New York are all in Manhattan, contributing to greater funding for their public schools.")
 )
 
+# Second Page set up 
+page2_panel_widget <- sidebarPanel(
+  selectInput(
+    inputId = "borough_selection",
+    label = h3("Borough", align = "left"),
+    choices = unique(nyc_data$Borough),
+    multiple = TRUE
+  ),
+  selectInput(
+    inputId = "race_selection",
+    label = h3("Race", align = "left"),
+    choices = list(Asian = 'nyc_data$Percent_Asian',
+                   Black = 'nyc_data$Percent_Black',
+                   Hispanic = 'nyc_data$Percent_Hispanic',
+                   White = 'nyc_data$Percent_White'),
+    multiple = FALSE
+  ))
+
 
 race_scatter_plot <- mainPanel(
-  plotlyOutput(outputId = "race_scatter_plot")
+  plotlyOutput(outputId = "race_scatter_plot", width = "100%")
 )
 
 second_page <- tabPanel(
   "Race vs Scores",
-  race_scatter_plot
-)
-
+  sidebarLayout(
+    race_scatter_plot,
+    page2_panel_widget
+  ))
+  
+# Conclusion
 conclusion <- tabPanel(
   "Conclusion", 
   p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school. The first conclusion we came up with is that schools in richer neighborhoods are doing better, on average, on their SATs. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. According to Public School Review, in most states, local property taxes make up the majority of funding. This means that a schools funding depends on how wealthy, or poor, a neighborhood is. This leads to many complications and questions about equality and equity in the twenty first century.")
 )
-
 
 
 

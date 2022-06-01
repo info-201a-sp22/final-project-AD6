@@ -81,16 +81,18 @@ server <- function(input, output) {
   
   #Second Page Plot
   output$race_scatter_plot <- renderPlotly({
+    nyc_data <- nyc_data %>% 
+    filter(Borough %in% input$borough_selection)
+    
     race_scatter_plot <- ggplot(data = nyc_data) +
-      geom_line(mapping = aes(x = total_score, 
-                              y = Percent_White, color = School.Name)) +
-      blank_theme +
+      geom_point(mapping = aes(x = total_score, 
+                              y = input$race_selection,
+                              color = Borough)) +
       labs(title = "SAT Scores by Race",
            x = "Total SAT Score",
            y = "Race")
     
     return(race_scatter_plot)
   })
-  
   
 }
