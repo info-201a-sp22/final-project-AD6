@@ -18,7 +18,10 @@ intro_tab <- tabPanel(
     h3("Data"),
     renderMarkdown("data_text.md"),
     h3("Limitations"),
-    renderMarkdown("limitations_text.md"))) 
+    renderMarkdown("limitations_text.md"),
+    h3("5 Boroughs of NYC"),
+    img("Image of NYC Boroughs", src = "https://blog-www.pods.com/wp-content/uploads/2019/04/MG_1_2_New_York_City_Boroughs-1024x711.png", width = "50%"), 
+    )) 
 
 # Data needed for first page widgets #
 # city miles range
@@ -106,14 +109,14 @@ chart_widget <-
     value = c(622.5000,1449.0000))
    
 
-scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
+scatter_plot2 <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
                 h3("How does the number of students enrolled in a a school impact the average SAT score?"),
                 p(""))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
   sidebarLayout(sidebarPanel(chart_widget,), 
-                             scatter_plot))
+                             scatter_plot2))
   
 # Conclusion
 conclusion <- tabPanel(
@@ -122,9 +125,10 @@ conclusion <- tabPanel(
   p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school."), 
   h3("Neighborhood Income and Test Scores"), 
   p("Our first conclusion was informed from our dot plot that examined the role a neighborhood plays on a schools average SAT scores. From our analysis, we determined that schools in richer neighborhoods are doing better, on average, on their SATs. We used Buisness Insider, and the graph below, to analyze the wealth of the 5 boroughs in NYC. Manhattan, Brooklyn, and parts of Staten Island were found to have the average highest median household incomes. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. According to Public School Review, in most states, local property taxes make up the majority of funding. This means that a schools funding depends on how wealthy, or poor, a neighborhood is. This leads to many complications and questions about equality and equity in the twenty first century."), 
-  img("https://i.insider.com/54872d4beab8ead1389000d8"), 
+  img("Image of the wealth breakdown of NYC boroughs", src = "https://i.insider.com/54872d4beab8ead1389000d8", width = "50%"), 
   h3("Race and Test Scores"), 
   p("Our second conclusion pertains to race and its effects on public school funding in New York City. These conclusions were made from analyzing our ________, along with the pie charts we created in ealier steps. Unfortunately in America, schools with more students of color typically receive less funding due to many factors including the property taxes element. We were able to see this first hand through our analysis of the data set when we created pie charts for each neighborhood and looked into the racial makeup of that school zone. We determined that Manhattan, the neighborhood with the highest funding and highest SAT scores on average, is majority white, while the Bronx is majority Hispanic, and on average receives less funding and has lower test scores. Even though we can go back and forth on the exact reasons for these findings, the overarching reason for these results is structural racism and the institutions in America that work to keep people of color down."), 
+  img("Image of race breakdowns for NYC boroughs", src = "https://i.pinimg.com/originals/0a/14/d4/0a14d4e0d55633198602265d50625210.png", width = "50%"), 
   h3("Student Enrollment and its Effect on Testing"), 
   p("According to our ________. The conclusion we made from this graph was that student enrollment plays a factor in average SAT scores for the school. This analysis is backed up by research by Danielle Farrier and David Sciarra, who found that 'children in smaller classes achieve better outcomes, both academic and otherwise, and that class size reduction can be an effective strategy for closing racially or socioeconomically based achievement gaps .'  When children are in smaller classes, they are able to get more attention from their teachers and learn in a more focused and adaptive environment that fosters learning."), 
   h3("Works Cited"), 
