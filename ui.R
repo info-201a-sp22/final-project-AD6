@@ -13,7 +13,7 @@ my_theme <- bs_theme(bg = "#0b3d91", #background color
                      primary = "#FCC780") # primary color
                      
  my_theme <- bs_theme_update(my_theme, bootswatch = "lux") %>% 
-  s_add_rules(sass::sass_file("custom_theme.scss"))
+  bs_add_rules(sass::sass_file("custom_theme.scss"))
 
 intro_tab <- tabPanel(
   "Introduction",
@@ -93,7 +93,8 @@ second_page <- tabPanel(
   sidebarLayout(
     race_scatter_plot,
     page2_panel_widget
-  ))
+  ),
+  includeMarkdown("race_chart_text.md"))
 
 # Data for Third Page 
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
