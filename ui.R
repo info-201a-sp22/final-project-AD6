@@ -99,11 +99,11 @@ second_page <- tabPanel(
 
 # Data for Third Page 
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
-avg_sat_scores <- nyc_data %>% 
+avg_sat_scores <- nyc_data %>%
   mutate(avg_sat_scores = Average.Score..SAT.Math. + ((Average.Score..SAT.Reading. + Average.Score..SAT.Writing.)/2))
 
-student_enrollment <- avg_sat_scores %>% 
-  group_by(Student.Enrollment) %>% 
+student_enrollment <- avg_sat_scores %>%
+  group_by(Student.Enrollment) %>%
   summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
 student_enrollment <- na.omit(student_enrollment)
 
@@ -119,34 +119,32 @@ chart_widget <-
    
 
 scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
-                h3("How does the number of students enrolled in a a school impact the average SAT score?"),
-                p(""))
+                h3("How does the number of students enrolled in a school impact the average SAT score?"),
+                p("In this graph we are able to analyze the average SAT scores compared to the different amounts of students enrolled in a school. With this scatter plot visualization, we are able to interact with the average scores and see which levels of student enrollment these scores fall under. What this graph is showing is that the higher the student enrollment is, the higher the average SAT score will be."))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
-  sidebarLayout(sidebarPanel(chart_widget,), 
+  sidebarLayout(sidebarPanel(chart_widget,),
                              scatter_plot))
   
 # Conclusion
 conclusion <- tabPanel(
-  "Conclusion", 
+  "Conclusion",
   h1("Conclusion"),
-  p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school."), 
-  h3("Neighborhood Income and Test Scores"), 
-  p("Our first conclusion was informed from our dot plot that examined the role a neighborhood plays on a schools average SAT scores. From our analysis, we determined that schools in richer neighborhoods are doing better, on average, on their SATs. We used Buisness Insider, and the graph below, to analyze the wealth of the 5 boroughs in NYC. Manhattan, Brooklyn, and parts of Staten Island were found to have the average highest median household incomes. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. According to Public School Review, in most states, local property taxes make up the majority of funding. This means that a schools funding depends on how wealthy, or poor, a neighborhood is. This leads to many complications and questions about equality and equity in the twenty first century."), 
-  img("Image of the wealth breakdown of NYC boroughs", src = "https://i.insider.com/54872d4beab8ead1389000d8", width = "50%"), 
-  h3("Race and Test Scores"), 
-  p("Our second conclusion pertains to race and its effects on public school funding in New York City. These conclusions were made from analyzing our ________, along with the pie charts we created in ealier steps. Unfortunately in America, schools with more students of color typically receive less funding due to many factors including the property taxes element. We were able to see this first hand through our analysis of the data set when we created pie charts for each neighborhood and looked into the racial makeup of that school zone. We determined that Manhattan, the neighborhood with the highest funding and highest SAT scores on average, is majority white, while the Bronx is majority Hispanic, and on average receives less funding and has lower test scores. Even though we can go back and forth on the exact reasons for these findings, the overarching reason for these results is structural racism and the institutions in America that work to keep people of color down."), 
-  img("Image of race breakdowns for NYC boroughs", src = "https://i.pinimg.com/originals/0a/14/d4/0a14d4e0d55633198602265d50625210.png", width = "50%"), 
-  h3("Student Enrollment and its Effect on Testing"), 
-  p("According to our ________. The conclusion we made from this graph was that student enrollment plays a factor in average SAT scores for the school. This analysis is backed up by research by Danielle Farrier and David Sciarra, who found that 'children in smaller classes achieve better outcomes, both academic and otherwise, and that class size reduction can be an effective strategy for closing racially or socioeconomically based achievement gaps .'  When children are in smaller classes, they are able to get more attention from their teachers and learn in a more focused and adaptive environment that fosters learning."), 
-  h3("Works Cited"), 
-  p("https://onlinelibrary.wiley.com/doi/full/10.1002/ets2.12098
-https://www.publicschoolreview.com/blog/an-overview-of-the-funding-of-public-schools
+  p("From this project we were able to conduct a deep dive into a problem that none of us knew very much about when we began. Through jumping into this project we have analyzed the roles that race, funding, and school size play on predicting the SAT scores of students in a particular school."),
+  h3("Neighborhood Income and Test Scores"),
+  p("Our first conclusion was informed from our scatterplot plot on the first page that examined the role a neighborhood plays on a schools average SAT scores. From our analysis, we determined that schools in richer neighborhoods are doing better, on average, on their SATs. We used Buisness Insider, and the graph below, to analyze the wealth of the 5 boroughs in NYC. Manhattan, Brooklyn, and parts of Staten Island were found to have the average highest median household incomes. This is demonstrated through our first interactive graph that demonstrates how Manhattan has the highest average SAT scores for their schools. According to Public School Review, in most states, local property taxes make up the majority of funding. This means that a schools funding depends on how wealthy, or poor, a neighborhood is. This leads to many complications and questions about equality and equity in the twenty first century."), 
+  img("Image of the wealth breakdown of NYC boroughs", src = "https://i.insider.com/54872d4beab8ead1389000d8", width = "50%"),
+  h3("Race and Test Scores"),
+  p("Our second conclusion pertains to race and its effects on public school funding in New York City. These conclusions were made from analyzing our scatterplot on the second page, along with the pie charts we created in ealier weeks. Unfortunately in America, schools with more students of color typically receive less funding due to many factors including the property taxes element. We were able to see this first hand through our analysis of the data set when we created pie charts for each neighborhood and looked into the racial makeup of that school zone. We determined that Manhattan, the neighborhood with the highest funding and highest SAT scores on average, is majority white, while the Bronx is majority Hispanic, and on average receives less funding and has lower test scores. Even though we can go back and forth on the exact reasons for these findings, the overarching reason for these results is structural racism and the institutions in America that work to keep people of color down."),
+  img("Image of race breakdowns for NYC boroughs", src = "https://i.pinimg.com/originals/0a/14/d4/0a14d4e0d55633198602265d50625210.png", width = "50%"),
+  h3("Student Enrollment and its Effect on Testing"),
+  p("According to the scatterplot on our third page, the higher the student enrollment, the higher the school's average SAT scores. The conclusion we made from this graph was that student enrollment plays a factor in average SAT scores for the school. This analysis is backed up by research by MSU professor Spyros Konstantopoulos, who found that “…reducing class size does not automatically guarantee improvements in student performance. Many other classroom processes and dynamics factor in and have to work well together to achieve successful outcomes in student learning.” This leads us to believe that being in larger schools is beneficial to students as they have more resources and learn how to work together in bigger environments. This was shocking to us, as we had assumed the opposite was going to be true."),
+  h3("Works Cited"),
+  p("https://msutoday.msu.edu/news/2019/study-shows-smaller-class-sizes-not-always-better-for-pupils;
+https://www.publicschoolreview.com/blog/an-overview-of-the-funding-of-public-schools;
 https://www.businessinsider.com/new-york-city-income-maps-2014-12")
 )
-
-
 
 ui <- navbarPage(
   "NYC SAT Scores",
