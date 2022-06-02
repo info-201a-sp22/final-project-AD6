@@ -77,10 +77,10 @@ page2_panel_widget <- sidebarPanel(
   selectInput(
     inputId = "race_selection",
     label = h3("Race"),
-    choices = list(Asian = 'nyc_data$Percent_Asian',
-                   Black = 'nyc_data$Percent_Black',
-                   Hispanic = 'nyc_data$Percent_Hispanic',
-                   White = 'nyc_data$Percent_White'),
+    choices = list(Asian = "Percent_Asian",
+                   Black = "Percent_Black",
+                   Hispanic = "Percent_Hispanic",
+                   White = "Percent_White"),
     multiple = FALSE
   ))
 

@@ -89,9 +89,9 @@ server <- function(input, output) {
     filter(Borough %in% input$borough_selection)
     
     race_scatter_plot <- ggplot(data = nyc_data) +
-      geom_point(mapping = aes(x = total_score, 
+      geom_point(mapping = aes_string(x = "total_score", 
                               y = input$race_selection,
-                              color = Borough)) +
+                              color = "Borough")) +
       labs(title = "SAT Scores by Race",
            x = "Total SAT Score",
            y = "Race")
