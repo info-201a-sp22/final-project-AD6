@@ -29,6 +29,10 @@ nyc_data <- nyc_data %>%
 
 nyc_data$Percent_White <- as.numeric(nyc_data$Percent_White)
 
+avg_sat_scores <- nyc_data %>% 
+  mutate(avg_sat_scores = Average.Score..SAT.Math. + ((Average.Score..SAT.Reading. + Average.Score..SAT.Writing.)/2))
+
+
 # Theme 
 blank_theme <- theme_bw() +
   theme(
@@ -96,9 +100,12 @@ server <- function(input, output) {
   })
   
 
-
 # Third Page Plot 
-
+  student_enrollment <- avg_sat_scores %>% 
+    group_by(Student.Enrollment) %>% 
+    summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
+  student_enrollment <- na.omit(student_enrollment)
+  
   output$third_page_plot <- renderPlotly({
     student_enrollment2 <- student_enrollment %>% 
       filter(average_sat_score >= input$avg_sat_scores_selection[1] & average_sat_score <= input$avg_sat_scores_selection[2])

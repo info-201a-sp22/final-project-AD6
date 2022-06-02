@@ -1,1 +1,1 @@
-This chart illustrates the comparison between the racial compositions of schools versus the average SAT score of schools. 
+This chart illustrates the comparison between the racial compositions of schools versus the average SAT score of schools. This data provides valuable insight into the 

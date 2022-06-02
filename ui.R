@@ -6,6 +6,7 @@ library(shiny)
 library(stringr)
 library(bslib)
 library(markdown)
+
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
 my_theme <- bs_theme(bg = "#0b3d91", #background color
@@ -69,13 +70,13 @@ first_page <- tabPanel(
 page2_panel_widget <- sidebarPanel(
   selectInput(
     inputId = "borough_selection",
-    label = h3("Borough", align = "left"),
+    label = h3("Borough"),
     choices = unique(nyc_data$Borough),
     multiple = TRUE
   ),
   selectInput(
     inputId = "race_selection",
-    label = h3("Race", align = "left"),
+    label = h3("Race"),
     choices = list(Asian = 'nyc_data$Percent_Asian',
                    Black = 'nyc_data$Percent_Black',
                    Hispanic = 'nyc_data$Percent_Hispanic',
@@ -104,7 +105,6 @@ avg_sat_scores <- nyc_data %>%
 student_enrollment <- avg_sat_scores %>% 
   group_by(Student.Enrollment) %>% 
   summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
-
 student_enrollment <- na.omit(student_enrollment)
 
 # Third Page Setup
