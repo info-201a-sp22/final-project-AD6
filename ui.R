@@ -119,8 +119,8 @@ chart_widget <-
    
 
 scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
-                h3("How does the number of students enrolled in a a school impact the average SAT score?"),
-                p(""))
+                h3("How does the number of students enrolled in a school impact the average SAT score?"),
+                p("In this graph we are able to analyze the average SAT scores compared to the different amounts of students enrolled in a school. With this scatter plot visualization, we are able to interact with the average scores and see which levels of student enrollment these scores fall under. What this graph is showing is that the higher the student enrollment is, the higher the average SAT score will be."))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
