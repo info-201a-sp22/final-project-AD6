@@ -22,11 +22,21 @@ intro_tab <- tabPanel(
     theme = my_theme,
     h1("Analysis of NYC SAT Scores", align = "center"),
     h3("Research Questions", align = "left"),
-    renderMarkdown("intro_text.md"),
+    p("Our final project will focus on analyzing patterns within the average SAT scores for NYC public schools. Some initial questions we are posing (which may require additional datasets) include:
+1. Which geographical regions (based on borough or zip code) have the highest and lowest average SAT scores?
+2. What are the correlations between average SAT scores and school funding?  
+3. Similar to the previous question, how do resource disparities (staff, number of AP classes offered, extracurriculars, etc.) impact SAT scores?
+4. What patterns of inequity are there between average SAT scores and demographic compositions of public schools (average income, race, parental education level, etc.)?
+5. How does class size/total number of students impact SAT scores?
+
+These questions are important to consider since standardized testing is nowhere near an accurate proxy for intelligence; however, SAT scores serve as a way to illuminate the socio-economic conditions of various neighborhoods. Of course, to score well on the SATs, students must study for it in a highly calculated manner. The ability to prepare for these tests is not accessible to everyone, especially due to the expense of paid tutoring and the amount of time one has to dedicate to it outside of school. It will be interesting to investigate these questions to understand the ways in which certain variables impact average scores. This knowledge may influence education policies, public school financing, the design of the SAT, or the norm for colleges to require these scores.
+
+An ethical question we may ask when working with this data is do we have all significant observations needed to conclude information from this data? Could there have been information purposely left out by either of the two contributors? In this case there could have been a lack of information that could result in different outcomes. Some possible limitations with this data is that there are some missing values which leave room for inaccurate drawings. Another limitation is that for one of the observations, not all students were tested which could affect the results we gather from the data."),
     h3("Data"),
-    renderMarkdown("data_text.md"),
+    p("We obtained this data from a platform named Kaggle. We attached a link to our data at the bottom of this paragraph. This data was collected and published by the New York City Department of Education along with the College Board who provided scores and testing rates. This data was collected in order to analyze a few different things including which schools received the highest SAT scores, highest performing schools, which borough has higher performing schools, and the relation between smaller schools and performance on the tests. There are 22 observations and 435 features."),
+    url <- a("Kaggle Homepage Link", href= "https://www.kaggle.com/"),
     h3("Limitations"),
-    renderMarkdown("limitations_text.md"),
+    p("The dataset that we are diving into and the questions we are trying to answer can have vast implications for the future of education around the country. This dataset will help us to understand the impacts of inequitable funding and racial discrimination on the United States public schooling system. SAT scores may seem like just a number, but in reality, they can open, and just as easily close, doors for many students. Understanding who scores what, and from where, allows us to observe the importance of resource allocation and funding, which is important for policymakers and politicians to see. By giving this information to policymakers, we can work to make public schooling more equitable, and a person's zip code not a determinant of their future. Undertaking this project, we hope to bring awareness to the discrimination in education that has been plaguing the United States for centuries. The current funding system on the United States public school system, ensures that community wealth disparities carry over into education. We hope, that with this information, policymakers can begin to make changes that will allow equal opportunities for all people."),
     h3("5 Boroughs of NYC"),
     img("Image of NYC Boroughs", src = "https://blog-www.pods.com/wp-content/uploads/2019/04/MG_1_2_New_York_City_Boroughs-1024x711.png", width = "50%"), 
     )) 
