@@ -106,7 +106,9 @@ chart_widget <-
     value = c(622.5000,1449.0000))
    
 
-scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"))
+scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
+                h3("How does the number of students enrolled in a a school impact the average SAT score?"),
+                p(""))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
