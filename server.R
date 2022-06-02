@@ -95,10 +95,10 @@ server <- function(input, output) {
     return(race_scatter_plot)
   })
   
-}
+
 
 # Third Page Plot 
-server <- function(input, output){
+
   output$third_page_plot <- renderPlotly({
     student_enrollment2 <- student_enrollment %>% 
       filter(average_sat_score >= input$avg_sat_scores_selection[1] & average_sat_score <= input$avg_sat_scores_selection[2])
