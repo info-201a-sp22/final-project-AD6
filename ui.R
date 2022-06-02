@@ -104,6 +104,7 @@ second_page <- tabPanel(
     race_scatter_plot,
     page2_panel_widget
   ),
+  h3("How do the racial demographics of NYC public schools correlate with SAT scores?"),
   includeMarkdown("race_chart_text.md"))
 
 # Data for Third Page

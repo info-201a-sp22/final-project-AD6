@@ -3,7 +3,7 @@
 
 Authors: Kaylee Kobashigawa (kobaskay@uw.edu), Elizabeth Chavez (chavez02@uw.edu), and Emma Velling (evelling@uw.edu)
 
-Link: Link to your Shiny App here
+Link: https://kayleek.shinyapps.io/final-project-AD6/
 
 # Introduction
 Our final project will focus on analyzing patterns within the average SAT scores for NYC public schools. We obtained this data from a platform named Kaggle. [Here](https://www.kaggle.com/) is a link to the data source. This data was collected and published by the New York City Department of Education along with the College Board who provided scores and testing rates. This data was collected in order to analyze a few different things including which schools received the highest SAT scores, highest performing schools, which borough has higher performing schools, and the relation between smaller schools and performance on the tests. There are 22 observations and 435 features.
