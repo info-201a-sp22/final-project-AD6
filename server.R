@@ -9,31 +9,30 @@ nyc_data <- nyc_data %>%
     Average.Score..SAT.Reading. + Average.Score..SAT.Writing.) / 2,
     total_score = english_score + Average.Score..SAT.Math.)
 
-nyc_data <- nyc_data %>% 
+nyc_data <- nyc_data %>%
   mutate(Percent_Asian = paste0(str_replace(nyc_data$Percent.Asian, "%", "")))
 
 nyc_data$Percent_Asian <- as.numeric(nyc_data$Percent_Asian)
 
-nyc_data <- nyc_data %>% 
+nyc_data <- nyc_data %>%
   mutate(Percent_Black = paste0(str_replace(nyc_data$Percent.Black, "%", "")))
 
 nyc_data$Percent_Black <- as.numeric(nyc_data$Percent_Black)
 
-nyc_data <- nyc_data %>% 
+nyc_data <- nyc_data %>%
   mutate(Percent_Hispanic = paste0(str_replace(nyc_data$Percent.Hispanic, "%", "")))
 
 nyc_data$Percent_Hispanic <- as.numeric(nyc_data$Percent_Hispanic)
 
-nyc_data <- nyc_data %>% 
+nyc_data <- nyc_data %>%
   mutate(Percent_White = paste0(str_replace(nyc_data$Percent.White, "%", "")))
 
 nyc_data$Percent_White <- as.numeric(nyc_data$Percent_White)
 
-avg_sat_scores <- nyc_data %>% 
-  mutate(avg_sat_scores = Average.Score..SAT.Math. + ((Average.Score..SAT.Reading. + Average.Score..SAT.Writing.)/2))
+avg_sat_scores <- nyc_data %>%
+  mutate(avg_sat_scores = Average.Score..SAT.Math. + ((Average.Score..SAT.Reading. + Average.Score..SAT.Writing.) / 2))
 
-
-# Theme 
+# Theme
 blank_theme <- theme_bw() +
   theme(
     axis.ticks = element_blank(), # remove axis ticks
@@ -43,14 +42,14 @@ blank_theme <- theme_bw() +
   )
 
 server <- function(input, output) {
-  # Introduction Page 
-  
+  # Introduction Page
+
   # First Page (scatterplot)
   output$scatter_plot <- renderPlotly({
     plot_data <- nyc_data %>%
       filter(Borough %in% input$borough_pick,
-             Student.Enrollment <= input$student_enrollment) 
-    
+             Student.Enrollment <= input$student_enrollment)
+
     plot2 <- plot_ly(plot_data,
                      x = ~Average.Score..SAT.Math.,
                      y = ~Average.Score..SAT.Reading.,
@@ -71,49 +70,47 @@ server <- function(input, output) {
                                    "<b>Average SAT Reading Score:</b>",
                                    plot_data$Average.Score..SAT.Reading.),
                      hoverinfo = "text") %>%
-      
+
       # set title, x, and y axis labels
       layout(title = "Average SAT Scores by Neighborhood",
              xaxis = list(title = "Average SAT Math Score"),
              yaxis = list(title = "Average SAT Reading Score"))
-    
+
     # return the scatter plot
     return(plot2)
-    
-    
+
   })
-  
+
   #Second Page Plot
   output$race_scatter_plot <- renderPlotly({
-    nyc_data <- nyc_data %>% 
+    nyc_data <- nyc_data %>%
     filter(Borough %in% input$borough_selection)
-    
+
     race_scatter_plot <- ggplot(data = nyc_data) +
-      geom_point(mapping = aes_string(x = "total_score", 
+      geom_point(mapping = aes_string(x = "total_score",
                               y = input$race_selection,
                               color = "Borough")) +
       labs(title = "SAT Scores by Race",
            x = "Total SAT Score",
            y = "Race")
-    
+
     return(race_scatter_plot)
   })
-  
 
-# Third Page Plot 
-  student_enrollment <- avg_sat_scores %>% 
-    group_by(Student.Enrollment) %>% 
+# Third Page Plot
+  student_enrollment <- avg_sat_scores %>%
+    group_by(Student.Enrollment) %>%
     summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
   student_enrollment <- na.omit(student_enrollment)
-  
+
   output$third_page_plot <- renderPlotly({
-    student_enrollment2 <- student_enrollment %>% 
+    student_enrollment2 <- student_enrollment %>%
       filter(average_sat_score >= input$avg_sat_scores_selection[1] & average_sat_score <= input$avg_sat_scores_selection[2])
-    
+
     third_page_plot <- ggplot(data = student_enrollment2) +
       geom_point(mapping = aes(x = Student.Enrollment, y = average_sat_score)) +
-      labs(title = "Student Enrollment Versus Average SAT Scores", 
-           x = "Student Enrollment", 
+      labs(title = "Student Enrollment Versus Average SAT Scores",
+           x = "Student Enrollment",
            y = "Average SAT Scores")
     return(third_page_plot)
   })
