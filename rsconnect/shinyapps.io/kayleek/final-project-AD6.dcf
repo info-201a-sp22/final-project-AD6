@@ -5,9 +5,9 @@ account: kayleek
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6405357
-bundleId: 5972066
+bundleId: 5972171
 url: https://kayleek.shinyapps.io/final-project-AD6/
-when: 1654187679.78141
-lastSyncTime: 1654187679.78141
+when: 1654189764.01228
+lastSyncTime: 1654189764.01228
 asMultiple: FALSE
 asStatic: FALSE

@@ -65,7 +65,7 @@ student_slider <- sliderInput(inputId = "student_enrollment",
 
 # Page setup #
 first_page <- tabPanel(
-  "SAT Scores and Student Enrollment",
+  "SAT Scores and Neighborhood",
   fluidRow(
     column(city_slider, width = 6),
     column(student_slider, width = 6)
