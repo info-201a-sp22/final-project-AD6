@@ -8,13 +8,13 @@ library(bslib)
 library(markdown)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
-my_theme <- bs_theme_update(my_theme, bootswatch = "lux") %>% 
-  bs_add_rules(sass::sass_file("custom_theme.scss"))
+ # my_theme <- bs_theme_update(my_theme, bootswatch = "lux") %>% 
+  #s_add_rules(sass::sass_file("custom_theme.scss"))
 
 intro_tab <- tabPanel(
   "Introduction",
   fluidPage(
-    theme = my_theme,
+    # theme = my_theme,
     h1("Analysis of NYC SAT Scores", align = "center"),
     h3("Research Questions", align = "left"),
     renderMarkdown("intro_text.md"),
@@ -112,14 +112,14 @@ chart_widget <-
     value = c(622.5000,1449.0000))
    
 
-scatter_plot2 <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
+scatter_plot <- mainPanel(plotlyOutput(outputId = "third_page_plot"),
                 h3("How does the number of students enrolled in a a school impact the average SAT score?"),
                 p(""))
 
 third_page <- tabPanel(
   "Student Enrollment VS Average SAT Scores",
   sidebarLayout(sidebarPanel(chart_widget,), 
-                             scatter_plot2))
+                             scatter_plot))
   
 # Conclusion
 conclusion <- tabPanel(

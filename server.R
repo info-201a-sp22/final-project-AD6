@@ -105,7 +105,7 @@ server <- function(input, output){
     
     third_page_plot <- ggplot(data = student_enrollment2) +
       geom_point(mapping = aes(x = Student.Enrollment, y = average_sat_score)) +
-      labs(title = "Student Enrollment versus Average SAT Scores", 
+      labs(title = "Student Enrollment Versus Average SAT Scores", 
            x = "Student Enrollment", 
            y = "Average SAT Scores")
     return(third_page_plot)
