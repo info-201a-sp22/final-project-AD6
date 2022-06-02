@@ -8,10 +8,13 @@ library(bslib)
 library(markdown)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
+my_theme <- bs_theme_update(my_theme, bootswatch = "lux") %>% 
+  bs_add_rules(sass::sass_file("custom_theme.scss"))
 
 intro_tab <- tabPanel(
   "Introduction",
   fluidPage(
+    theme = my_theme,
     h1("Analysis of NYC SAT Scores", align = "center"),
     h3("Research Questions", align = "left"),
     renderMarkdown("intro_text.md"),
