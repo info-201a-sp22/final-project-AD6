@@ -101,6 +101,7 @@ student_enrollment <- avg_sat_scores %>%
   summarize(average_sat_score = mean(avg_sat_scores, na.rm = TRUE))
 
 student_enrollment <- na.omit(student_enrollment)
+
 # Third Page Setup
 chart_widget <-
   sliderInput(
