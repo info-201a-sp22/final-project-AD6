@@ -8,6 +8,10 @@ library(bslib)
 library(markdown)
 nyc_data <- read.csv("scores.csv", stringsAsFactors = FALSE)
 
+my_theme <- bs_theme(bg = "#0b3d91", #background color
+                     fg = "white", #foreground color
+                     primary = "#FCC780") # primary color
+                     
  my_theme <- bs_theme_update(my_theme, bootswatch = "lux") %>% 
   s_add_rules(sass::sass_file("custom_theme.scss"))
 
